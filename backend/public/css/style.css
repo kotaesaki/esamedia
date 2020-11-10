@@ -1,0 +1,17 @@
+ul#dashbar > li {
+    padding-top: 30px;
+}
+
+ul#dashbar > li > a {
+    color: aliceblue;
+    font-size: 20px;
+}
+
+form > img.add-image {
+    width: 30px;
+    height: 30px;
+}
+
+.image-btn {
+    display: none; /* アップロードボタンのスタイルを無効にする */
+}
