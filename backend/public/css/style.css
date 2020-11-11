@@ -15,3 +15,177 @@ form > img.add-image {
 .image-btn {
     display: none; /* アップロードボタンのスタイルを無効にする */
 }
+
+.slider {
+    position: relative;
+    margin: 50px auto;
+    width: 100%;
+    opacity: 0;
+}
+.slider img {
+    position: relative;
+    height: 28vw;
+    width: 100%;
+    object-fit: cover;
+}
+.slider h2 {
+    position: relative;
+    top: -10vw;
+    left: 10%;
+    width: 80%;
+    height: 50%;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 2vw;
+}
+.slick-prev:before,
+.slick-next:before {
+    color: #000;
+}
+.slick-initialized {
+    opacity: 1;
+}
+
+.search_container {
+    position: relative;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+.search_container input[type="text"] {
+    border: 1px solid #999;
+    padding: 3px 5px;
+    border-radius: 20px;
+    height: 2em;
+    width: 60%;
+    overflow: hidden;
+}
+.search_container input[type="text"]:focus {
+    outline: 0;
+}
+.search_container input[type="submit"] {
+    cursor: pointer;
+    font-family: FontAwesome;
+    font-size: 1.3em;
+    width: 8%;
+    border: none;
+    background: none;
+    color: #3879d9;
+    outline: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.aside-s {
+    position: relative;
+    text-align: center;
+    margin-top: 30px;
+}
+.text-s {
+    position: relative;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.new-box {
+    position: relative;
+    width: 100%;
+    height: 13vh;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    text-align: left;
+}
+.box-img-new {
+}
+.content-img-new {
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    width: 7vw;
+    height: 4.5vw;
+    object-fit: cover;
+}
+.content-title-new {
+    position: absolute;
+    width: 50%;
+    height: 15%;
+    top: 20%;
+    left: 40%;
+    font-size: 0.8vw;
+    font-weight: bold;
+}
+.content-item {
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    background-color: #ffffff;
+    padding: 1rem 1rem;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    box-shadow: 2px 2px 4px gray;
+    border-radius: 4px 4px 4px 4px;
+}
+.content-img {
+    position: relative;
+    left: -70%;
+    width: 20vw;
+    height: 14vw;
+    object-fit: cover;
+}
+.content-title {
+    position: absolute;
+    width: 50%;
+    height: 15%;
+    top: 12%;
+    left: 45%;
+    font-size: 1.2vw;
+    font-weight: bold;
+}
+.content-date {
+    position: relative;
+    margin-top: -57%;
+
+    left: 37%;
+    font-size: 0.7vw;
+}
+.content-content {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    font-size: 0.9vw;
+    float: right;
+}
+
+.page {
+    box-shadow: 2px 2px 2px gray;
+    border-radius: 4px 4px 4px 4px;
+    margin-top: 5%;
+}
+.page-page {
+    position: relative;
+}
+.page-title {
+    position: relative;
+    margin-top: 12%;
+}
+.page-date {
+    position: relative;
+    margin-top: 3%;
+}
+.img-box {
+    width: 100%;
+    padding-top: 50%;
+    padding-top: -50%;
+    position: relative;
+    margin-top: -50%;
+}
+.page-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 110%;
+    object-fit: cover;
+}
+.page-content {
+    position: relative;
+    margin-top: 65%;
+}

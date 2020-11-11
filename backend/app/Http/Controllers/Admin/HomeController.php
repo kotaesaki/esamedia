@@ -33,7 +33,6 @@ class HomeController extends Controller
         $user_status = $user1->user_status;
 
         $posts = Post::orderBy('post_modified', 'desc')->get();
-
         return view('admin.list',['user_status' => $user_status,
                                   'posts' => $posts,                     
                                 ]);

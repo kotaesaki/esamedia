@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('top');
-});
+Route::get('/', 'App\Http\Controllers\TopController@index')->name('index');
+
+Route::get('/pages/{post_id?}', 'App\Http\Controllers\PageController@showPage')->name('show_page');
+Route::get('/search', 'App\Http\Controllers\SearchController@index')->name('search');
+
+
 
 Auth::routes();
 Route::group(['prefix' => 'admin'], function() {
@@ -33,5 +36,6 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('register', 'App\Http\Controllers\Auth\RegisterController@showRegisterForm')->name('admin.register');
 });
 
-Route::post('/pages/{post_id}', 'App\Http\Controllers\FormController@newPost')->name('new_post');
+
+Route::post('/pages', 'App\Http\Controllers\FormController@newPost')->name('new_post');
 
