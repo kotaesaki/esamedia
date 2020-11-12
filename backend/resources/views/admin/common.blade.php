@@ -144,6 +144,51 @@
         box-shadow: 0 0 0 4px rgba(35, 167, 195, 0.3);
         outline: 0;
       }
+      .FlexTexttitle {
+        position: relative;
+        font-size: 35px;
+        line-height: 1.8;
+
+      }
+
+      .FlexTexttitle__dummy {
+        overflow: hidden;
+        visibility: hidden;
+        box-sizing: border-box;
+        padding: 5px 15px;
+        min-height: 100px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        border: 1px solid;
+      }
+
+      .FlexTextarea__title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: 1px solid #b6c3c6;
+        border-radius: 4px;
+        color: inherit;
+        font: inherit;
+        letter-spacing: inherit;
+        resize: none;
+        border-width:0px;
+        border-style:None; 
+        font-size: 2rem;
+        font-weight:bold;
+      }
+
+      .FlexTextarea__title:focus {
+        box-shadow: 0 0 0 4px rgba(35, 167, 195, 0.3);
+        outline: 0;
+      }
+
       .userInfo__icon{
         width: 100%;
         height: 300px;
@@ -182,22 +227,24 @@
     <nav id="sidebar" class="col-md-2">
         <ul class="list-unstyled components" id="dashbar">
             <li>
-                <a href="">記事一覧を表示する
-</a>
+                <a href="{{route('admin.home')}}">記事一覧を表示する</a>
             </li>
             <li>
-                <a href="{{route('show_form')}}">記事を作成する
-</a>
+                <a href="{{route('show_form')}}">記事を作成する</a>
             </li>
+
+            @if(Auth::user()->user_status == "admin")
+            <li>
+                <a href="#">編集者を表示する</a>
+            </li>
+            <li>
+                <a href="{{route('admin.register')}}">編集者を登録する</a>
+            </li>
+            <li>
+                <a href="#">カテゴリを管理する</a>
+            </li>
+            @endif
             
-            <li>
-                <a href="#">編集者を表示する
-</a>
-            </li>
-            <li>
-                <a href="#">編集者を登録する
-</a>
-            </li>
         </ul>
 
     </nav>

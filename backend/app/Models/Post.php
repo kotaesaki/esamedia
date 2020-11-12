@@ -24,6 +24,7 @@ class Post extends Model
         'post_date',
         'post_modified',
     ];
+    protected $primaryKey = 'post_id';
 
     public $timestamps = false;
 }

@@ -32,7 +32,7 @@ class HomeController extends Controller
         $user1 = User::find(Auth::user()->id);
         $user_status = $user1->user_status;
 
-        $posts = Post::orderBy('post_modified', 'desc')->get();
+        $posts = Post::orderBy('post_date', 'desc')->simplePaginate(10);
         return view('admin.list',['user_status' => $user_status,
                                   'posts' => $posts,                     
                                 ]);

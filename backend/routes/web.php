@@ -32,10 +32,14 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('home/private', 'App\Http\Controllers\PostController@getPrivate')->name('post_getPrivate');
 
     Route::get('home/new', 'App\Http\Controllers\FormController@show')->name('show_form');
+    Route::get('home/{post_id}/edit', 'App\Http\Controllers\FormController@edit')->name('edit_form');
+    Route::post('home/new/complete', 'App\Http\Controllers\FormController@newPost')->name('new_post');
+    Route::post('home/edit/complete', 'App\Http\Controllers\FormController@editPost')->name('edit_post');
 
-    Route::get('register', 'App\Http\Controllers\Auth\RegisterController@showRegisterForm')->name('admin.register');
+    Route::get('home/register', 'App\Http\Controllers\EditRegisterController@showRegisterForm')->name('admin.register');
+    Route::post('home/register/complete', 'App\Http\Controllers\Auth\RegisterController@create')->name('create_register');
+
 });
 
 
-Route::post('/pages', 'App\Http\Controllers\FormController@newPost')->name('new_post');
 

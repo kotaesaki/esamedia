@@ -58,7 +58,56 @@ class FormController extends Controller
         $post_id = POST::max('post_id');
         $posts = POST::where('post_id', $post_id)->get();
 
-        return view('page',['posts' => $posts]);
+        return view('admin.complete',['posts' => $posts]);
+
+    }
+
+    public function edit(Request $request,$post_id)
+    {
+        $posts = POST::where('post_id', $post_id)->get();
+        return view('admin.edit',['posts' => $posts]);
+    }
+
+    public function editPost(Request $request)
+    {
+        $posts = POST::find($request->post_id);
+        $request->validate([
+            'post_title' => 'required|string|',
+            'post_content' =>'required|string|'
+        ]);
+
+        try{
+            DB::beginTransaction();
+
+            $upload_image = $request->file('image');
+            if($upload_image){
+                //アップロードされた画像を保存する
+                $path = $upload_image->store('uploads',"public");
+                //画像の保存に成功したらDBに記録する
+                if($path){
+                    try {
+                        $posts->file_name = $upload_image->getClientOriginalName();
+                        $posts->file_path = $path;
+                        $posts->save();
+
+                    }catch(\Exception $e){
+
+                    }
+                }
+            }   
+            try{
+                $posts->post_title = $request->post_title;
+                $posts->post_content = $request->post_content;
+                $posts->post_modified = Carbon::now();
+                $posts->save();
+                DB::commit();
+            }catch(\Exception $e){
+                DB::rollback();
+            }
+        }catch(\Exception $e) {
+                return redirect('/admin/home/edit');
+        }
+        return view('admin.complete');
 
     }
 }

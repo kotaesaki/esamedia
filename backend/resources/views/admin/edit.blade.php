@@ -15,10 +15,10 @@
         </ul>
     </div>
     @endif
-    <form method="post" action="{{ route('new_post') }}" enctype="multipart/form-data">
-        @csrf
-        
 
+    @foreach($posts as $post)
+    <form method="post" action="{{ route('edit_post') }}" enctype="multipart/form-data">
+        @csrf
         <div id="file-preview" class="file-preview">
             <div class="form-group">
             <label class="form-label image-label" for="image" style="padding:5%;">
@@ -32,22 +32,24 @@
         </div>
 
         <div class="form-group">
-        <div class="FlexTexttitle">
+            <div class="FlexTexttitle">
             <div class="FlexTexttitle__dummy" aria-hidden="true"></div>
             <textarea id="FlexTexttitle" name="post_title" class="FlexTextarea__title"
-             placeholder="記事タイトル"></textarea>
+             placeholder="記事タイトル">{{ $post->post_title }}</textarea>
         </div>
         <div class="form-group">
             <div class="FlexTextarea">
             <div class="FlexTextarea__dummy" aria-hidden="true"></div>
-            <textarea id="FlexTextarea" name="post_content" class="FlexTextarea__textarea" placeholder="コンテンツを入力してください"></textarea>
+            <textarea id="FlexTextarea" name="post_content" class="FlexTextarea__textarea" placeholder="コンテンツを入力してください">{{ $post->post_content }}</textarea>
             </div>
             
         </div>
+        <input type="hidden" name="post_id" value="{{ $post->post_id }}">
         <div class="form-group">
         <button type="submit">公開する</button>
         </div>
 
+    @endforeach
     </form>
     <div class="form-group">
     <button type="submit">下書き保存</button>
@@ -61,7 +63,7 @@
     new Vue({
         el: '#file-preview',
         data: {
-            imageData: '' //画像格納用変数
+            imageData: '{{ Storage::url($post->file_path) }}' //画像格納用変数
         },
         methods: {
             onFileChange(e) {
@@ -97,7 +99,6 @@
         })
     }
     document.querySelectorAll('.FlexTexttitle').forEach(flexTexttitle)
-
 </script>
 
 </div>

@@ -45,7 +45,6 @@
         <span class="small">下書き</span>
         @endif
         <span class="small">{{ $post->post_modified }}</span>
-        <span>{{ $post->file_name }}</span>
         <span>By {{ $post->post_author }}</span>
         </div>
         
@@ -56,20 +55,17 @@
         <form action=""></form>
         </div>
 
-        <form action="get" action="">
+        <a href="{{ route('edit_form',['post_id' => $post->post_id])}}"class="float-right align-middle" style="position: relative; top: -37px; left: -6%;">
         {{ csrf_field()}}
-            <input type="hidden" name="post_id" value="{{ $post->post_id }}">
-            <input type="submit" value="編集" class="float-right align-middle" style="position: relative; top: -37px; left: -6%;">
-        </form>
+            編集
+        </a>
         </div>
         @endforeach
         </div>
     </div>
 
     </div>
-
-
-
 </div>
+<div style="margin:5%;">{{ $posts->links() }}</div>
 
 @endsection
