@@ -27,19 +27,19 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(Request $request)
-    {   
+    {
         $user = new User;
         $user1 = User::find(Auth::user()->id);
         $user_status = $user1->user_status;
 
         $posts = Post::orderBy('post_date', 'desc')->simplePaginate(10);
-        return view('admin.list',['user_status' => $user_status,
-                                  'posts' => $posts,                     
-                                ]);
-
+        return view('admin.list', [
+            'user_status' => $user_status,
+            'posts' => $posts,
+        ]);
     }
-    public function showHome(){
+    public function showHome()
+    {
         return redirect('admin/home');
     }
-
 }

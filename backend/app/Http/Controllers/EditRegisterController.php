@@ -12,8 +12,5 @@ class EditRegisterController extends Controller
     }
     public function editRegister()
     {
-        
     }
-
-
 }

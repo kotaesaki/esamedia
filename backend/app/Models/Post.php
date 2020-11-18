@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use cebe\markdown\GithubMarkdown as Markdown;
 
 class Post extends Model
 {
@@ -27,4 +28,29 @@ class Post extends Model
     protected $primaryKey = 'post_id';
 
     public $timestamps = false;
+
+    public function terms()
+    {
+        return $this->belongsToMany(
+            'App\Models\Term',
+            'post_term',
+            'post_id',
+            'term_id'
+        );
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+    public function parse()
+    {
+        //newでインスタンスを作る
+        $parser = new Markdown();
+        //bodyをパースする
+        return $parser->parse($this->post_content);
+    }
+    public function getMarkBodyAttribute()
+    {
+        return $this->parse();
+    }
 }
