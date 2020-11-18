@@ -1,10 +1,21 @@
-ul#dashbar > li {
-    padding-top: 30px;
+body {
+    color: #424242;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans", Meiryo, sans-serif;
+}
+a {
+    color: hsl(0, 0%, 26%);
+    text-decoration: none;
+}
+a:hover {
+    color: hsl(0, 0%, 26%);
+    text-decoration: none;
 }
 
-ul#dashbar > li > a {
-    color: aliceblue;
-    font-size: 20px;
+nav.nav-top {
+    background-color: #ffffff;
+    box-shadow: 2px 2px 4px gray;
+    border-radius: 4px 4px 4px 4px;
 }
 
 form > img.add-image {
@@ -13,5 +24,391 @@ form > img.add-image {
 }
 
 .image-btn {
-    display: none; /* アップロードボタンのスタイルを無効にする */
+    display: none;
+}
+.contents {
+    position: relative;
+    top: -5vw;
+}
+.slider {
+    position: relative;
+    margin: 20px auto;
+    width: 100%;
+    opacity: 0;
+}
+.slider img {
+    position: relative;
+    height: 23vw;
+    width: 100%;
+    object-fit: cover;
+}
+.slider h2 {
+    position: relative;
+    top: -10vw;
+    left: 10%;
+    width: 80%;
+    height: 5%;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 2vw;
+}
+.slick-prev:before,
+.slick-next:before {
+    color: #000;
+}
+.slick-initialized {
+    opacity: 1;
+}
+
+.search_container {
+    position: relative;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+.search_container input[type="text"] {
+    border: 1px solid #999;
+    padding: 3px 5px;
+    border-radius: 20px;
+    height: 2em;
+    width: 60%;
+    overflow: hidden;
+}
+.search_container input[type="text"]:focus {
+    outline: 0;
+}
+.search_container input[type="submit"] {
+    cursor: pointer;
+    font-family: FontAwesome;
+    font-size: 1.3em;
+    width: 8%;
+    border: none;
+    background: none;
+    color: #3879d9;
+    outline: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.aside-s {
+    position: relative;
+    text-align: center;
+    margin-top: 30px;
+}
+.text-s {
+    position: relative;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+ul.cp_list {
+    padding: 0.5em;
+    list-style: none;
+}
+ul.cp_list li {
+    position: relative;
+    padding: 0.5em 1em 0.5em 2.3em;
+    margin-bottom: 5px;
+    text-align: left;
+}
+ul.cp_list li:after,
+ul.cp_list li:before {
+    content: "";
+    position: absolute;
+    transform: rotate(45deg);
+}
+ul.cp_list li:before {
+    top: 0.7em;
+    left: 0.2em;
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(255, 143, 0, 1);
+}
+ul.cp_list li:after {
+    top: 0.9em;
+    left: 0.7em;
+    width: 14px;
+    height: 14px;
+    background: rgba(255, 143, 0, 0.5);
+    transform: rotate(60deg);
+}
+
+ul.cp_list ul {
+    position: relative;
+    padding: 0.5em 1em 0.5em 2.3em;
+    margin-bottom: 5px;
+    text-align: left;
+    list-style: none;
+}
+.btn-flat-dashed-border {
+    display: inline-block;
+    padding: 0.2em 0.7em;
+    margin: 0.4em;
+    text-decoration: none;
+    color: #424242;
+    border: dashed 1px #f28e3c;
+    border-radius: 3px;
+    transition: 0.4s;
+}
+
+.btn-flat-dashed-border:hover {
+    border-style: dotted;
+    background: #f28e3c;
+    color: #ffffff;
+}
+
+.btn-flat-dashed-border2 {
+    display: inline-block;
+    position: relative;
+    padding: 0.2em 0.7em;
+    margin: 8% 2% 0 0;
+    text-decoration: none;
+    color: #ffffff;
+    border: dashed 1px #f28e3c;
+    background: #f28e3c;
+    border-radius: 3px;
+    transition: 0.4s;
+    z-index: 1000;
+}
+
+.btn-flat-dashed-border2:hover {
+    border-style: dotted;
+    background: #f28e3c;
+    color: #ffffff;
+}
+
+.new-box {
+    position: relative;
+    width: 100%;
+    height: 10vh;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    text-align: left;
+    z-index: 100;
+    transition: 0.2s;
+}
+.new-box:hover {
+    color: #79c6b6;
+}
+
+.content-img-new {
+    position: relative;
+    width: 30%;
+    height: 5.2vw;
+    display: table-cell;
+    vertical-align: middle;
+    float: left;
+    object-fit: cover;
+}
+.box-img-new {
+    position: relative;
+    height: 100%;
+}
+.content-title-new {
+    position: relative;
+    width: 70%;
+    height: 100%;
+    padding-top: 4%;
+    left: 5%;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 0.6rem;
+    font-weight: bold;
+    transition: 0.2s;
+}
+.content-title-new:hover {
+    color: #79c6b6;
+}
+.content-item {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: #ffffff;
+    padding: 1rem 1rem;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    box-shadow: 2px 2px 4px gray;
+    border-radius: 4px 4px 4px 4px;
+}
+.content-item:hover {
+    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+.content-item a {
+    width: 100%;
+}
+.content-img {
+    position: relative;
+    left: 0;
+    width: 40%;
+    height: 14vw;
+    object-fit: cover;
+    float: left;
+}
+
+.content-title {
+    position: relative;
+    width: 60%;
+    height: auto;
+    top: 0;
+    left: 4%;
+    font-size: 1.7vw;
+    font-weight: bold;
+    float: left;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    transition: 0.2s;
+}
+.content-title:hover {
+    color: #79c6b6;
+}
+.content-date {
+    position: relative;
+    margin-top: 0;
+    width: 60%;
+    left: 4%;
+    font-size: 0.7vw;
+}
+p.content-content {
+    position: relative;
+    top: 0;
+    width: 58%;
+    left: 4%;
+    font-size: 0.9vw;
+    float: left;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.page {
+    box-shadow: 2px 2px 2px gray;
+    border-radius: 4px 4px 4px 4px;
+    margin-top: 5%;
+}
+.page-page {
+    position: relative;
+}
+.page-title {
+    position: relative;
+    margin-top: 3%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+.page-date {
+    position: relative;
+    margin-top: 3%;
+}
+
+.page-img {
+    position: relative;
+    width: 100%;
+    height: 30vw;
+    top: 110%;
+    object-fit: cover;
+}
+.page-content {
+    position: relative;
+    margin-top: 7%;
+    padding-left: 5%;
+    padding-right: 5%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+.page-content h2 {
+    padding: 0.4em 0.5em; /*文字の上下 左右の余白*/
+    color: #494949; /*文字色*/
+    background: #f4f4f4; /*背景色*/
+    border-left: solid 5px #7db4e6; /*左線*/
+    border-bottom: solid 3px #d7d7d7; /*下線*/
+}
+.page-content h3 {
+    border-bottom: double 5px #7db4e6;
+}
+.page-content img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 480px) {
+    /*　画面サイズが480pxからはここを読み込む　*/
+    .slider {
+        position: relative;
+        margin: 10px auto;
+        width: 100%;
+    }
+    .slider img {
+        position: relative;
+        height: 50vw;
+        width: 100%;
+        object-fit: cover;
+    }
+    .slider h2 {
+        top: -20vw;
+        left: 10%;
+        font-size: 1rem;
+    }
+    .contents {
+        top: -17vw;
+    }
+    .content-item {
+        height: auto;
+        padding: 1rem 1rem;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .content-title {
+        width: 66%;
+        height: 100%;
+        top: 0;
+        left: 4vw;
+        font-size: 4.5vw;
+    }
+    .content-date {
+        margin-top: 1vw;
+        left: 0%;
+        font-size: 3vw;
+        clear: both;
+    }
+    p.content-content {
+        top: 0;
+        left: 0;
+        width: 100%;
+        font-size: 3.5vw;
+        clear: both;
+    }
+
+    .content-img {
+        left: 0;
+        width: 33%;
+        height: 20vw;
+        object-fit: cover;
+        z-index: 100;
+    }
+    .new-box {
+        height: 10vh;
+        margin-bottom: 40px;
+        margin-top: 40px;
+    }
+
+    .content-img-new {
+        width: 33%;
+        height: 19.2vw;
+    }
+    .box-img-new {
+        position: relative;
+        height: 100%;
+    }
+    .content-title-new {
+        width: 67%;
+        padding-top: 1%;
+        padding-right: 2%;
+        left: 5%;
+        font-size: 0.7rem;
+    }
+    .page-img {
+        height: 60vw;
+        top: 110%;
+        object-fit: cover;
+    }
 }

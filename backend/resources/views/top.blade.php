@@ -2,44 +2,37 @@
 
 @section('content')
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-        <div style="background-color:white; width:80%; height: 300px;">
-        
-        </div>
-        <div>
-            contents
-        </div>
-        <div>
-            ページネーション
-        </div>
-        </div>
+<div class="col-md-8">
 
-        <div class="col-md-4">
-        <aside>
-        <span>Search</span>
-        <form action="#" method="GET">
-            <div class="form-group input-group">
-                <input type="text">
-                <span class="input-group-btn text-right">
-                <button type="submit" class="btn btn-primary">検索</button>
-                </span>
-            </div>
-        </form>
-        </aside>
-
-        <aside>
-        <span>New</span>
-        </aside>
-        <aside>
-        <span>Category</span>
-        </aside>
-        <aside>
-        <span>About me</span>
-        </aside>
-        
+    <div class="slider">
+        @foreach($posts_new as $post_new)
+        <div><a href="{{ route('show_page',['post_id' => $post_new->post_id])}}">
+                <img src="{{Storage::url($post_new->file_path)}}" alt="image01">
+                <h2>{{ $post_new->post_title }}</h2>
+            </a>
         </div>
+        @endforeach
     </div>
+
+    <div class="contents">
+        @foreach($posts as $post)
+        <div class="content-item d-flex justify-content-center">
+            <a href="{{ route('show_page',['post_id' => $post->post_id])}}">
+                <div class="box-img">
+                    <img class="content-img post-image-col" src="{{ Storage::url($post->file_path) }}"
+                        alt="Card image cap">
+                    <h2 class="content-title">{{ $post->post_title }}</h2><br>
+                    <p class="content-date">{{ $post->post_date }}</p>
+                    <p class="content-content">{{ $post->post_content }}</p>
+                </div>
+
+            </a>
+        </div>
+        @endforeach
+    </div>
+    {{ $posts->links() }}
+
 </div>
+
+
 @endsection
