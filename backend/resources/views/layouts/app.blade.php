@@ -51,12 +51,7 @@
 <body style="background-color: #FCF9F2">
     <div id="app">
         <nav class="navbar navbar-expand-sm nav-top justify-content-center">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4"
-                aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="{{route('index')}}">ESALOG</a>
-
+            <a class="brand" href="{{route('index')}}">ESALOG</a>
         </nav>
 
 

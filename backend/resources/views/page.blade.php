@@ -22,7 +22,22 @@
     </div>
     <div class="page-comment bg-white">
         <div class="comment-timeline">
-            <span class="comment-b">コメント一覧</span>
+            @foreach($comments as $comment)
+            <div class="timeline">
+                <div>
+                    <span class="timeline-num">{{$counter++}}.</span>
+                    <span class="timeline-name">{{$comment->comment_author}}</span>
+                </div>
+                @if(!empty($comment->comment_author_url))
+                <a class="timeline-url" href="{{$comment->comment_author_url}}"
+                    target="__blank">{{$comment->comment_author_url}}</a>
+                @endif
+                <div>
+                    <span class="timeline-content">{{$comment->comment_content}}</span>
+                    <span class="timeline-date"><i class="fas fa-clock"></i> {{$comment->created_at}}</span>
+                </div>
+            </div>
+            @endforeach
         </div>
         <div class="comment-form">
             <form action="{{route('send_comment',['post_id'=>$post_id->post_id])}}" method="POST">

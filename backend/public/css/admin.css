@@ -409,6 +409,17 @@ ul.category_list ul li ul {
     font-weight: bold;
 }
 
+table tbody {
+    font-size: 0.7rem;
+}
+.comment-date {
+    color: #339bf7;
+}
+.comment-name {
+    position: relative;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 660px) {
     .main {
         margin-left: 0;

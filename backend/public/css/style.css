@@ -16,6 +16,15 @@ nav.nav-top {
     background-color: #ffffff;
     box-shadow: 2px 2px 4px gray;
     border-radius: 4px 4px 4px 4px;
+    height: 60px;
+}
+.brand {
+    display: inline-block;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    font-size: 1.125rem;
+    line-height: inherit;
+    white-space: nowrap;
 }
 
 form > img.add-image {
@@ -363,6 +372,9 @@ p.content-content {
     width: 45%;
     margin-left: 9%;
 }
+.comment-form {
+    margin-top: 7%;
+}
 .comment-author span,
 .comment-mail span,
 .comment-message span {
@@ -412,6 +424,58 @@ p.content-content {
     color: #fff;
     font-weight: bold;
     background-color: #f28e3c;
+}
+.timeline {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-top: 0.1rem solid #5e5e5e;
+    padding: 5%;
+}
+.timeline div {
+    position: relative;
+    width: 100%;
+}
+.timeline-num {
+    position: relative;
+    width: 10%;
+    padding: 3%;
+    padding-top: 5%;
+    font-size: 1.2rem;
+}
+.timeline-name {
+    position: relative;
+    width: 90%;
+    padding: 2%;
+    padding-top: 5%;
+    font-size: 1.2rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+.timeline-content {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding-left: 11%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+.timeline-date {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding-top: 3%;
+    padding-left: 11%;
+    font-size: 0.7rem;
+    color: grey;
+}
+.timeline a {
+    color: #1111cc;
+    width: 100%;
+    padding-left: 11%;
+    text-decoration: underline;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 @media screen and (max-width: 480px) {
@@ -502,5 +566,8 @@ p.content-content {
     .page-comment .comment-mail {
         width: 100%;
         margin-left: 0;
+    }
+    .comment-submit input {
+        width: 50%;
     }
 }

@@ -66,6 +66,10 @@
             <a href="{{route('show_form')}}" @if(Request::is('admin/home/new')) class="active" @else class="non-active"
               @endif><i class="fas fa-plus"></i> New post</a>
           </li>
+          <li>
+            <a href="{{route('show_comment')}}" @if(Request::is('admin/home/comment')) class="active" @else
+              class="non-active" @endif><i class="fas fa-comments"></i> Comments</a>
+          </li>
 
           @if(Auth::user()->user_status == "admin")
           <li>
@@ -124,7 +128,10 @@
             <a href="{{route('show_form')}}" @if(Request::is('admin/home/new')) class="active" @else class="non-active"
               @endif><i class="fas fa-plus"></i> New post</a>
           </li>
-
+          <li>
+            <a href="{{route('show_comment')}}" @if(Request::is('admin/home/comment')) class="active" @else
+              class="non-active" @endif><i class="fas fa-comments"></i> Comments</a>
+          </li>
           @if(Auth::user()->user_status == "admin")
           <li>
             <a href="{{route('show_users')}}" @if(Request::is('admin/home/users')) class="active" @else
