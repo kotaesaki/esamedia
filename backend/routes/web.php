@@ -20,9 +20,12 @@ Route::get('/search', 'App\Http\Controllers\SearchController@index')->name('sear
 Route::get('/category/{term_slug}', 'App\Http\Controllers\SearchController@searchCategory')->name('search_category');
 Route::get('/tag/{term_slug}', 'App\Http\Controllers\SearchController@searchTag')->name('search_tag');
 
+Route::post('/pages/{post_id}/comment', 'App\Http\Controllers\CommentController@send')->name('send_comment');
+
 
 
 Auth::routes();
+
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'App\Http\Controllers\Admin\HomeController@showHome')->name('admin.showHome');
     Route::get('home', 'App\Http\Controllers\Admin\HomeController@index')->name('admin.home');
@@ -51,8 +54,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('home/tag/{term_id}/edit', 'App\Http\Controllers\TagController@edit')->name('edit_tag');
     Route::post('home/tag/update', 'App\Http\Controllers\TagController@update')->name('update_tag');
 
-    Route::get('home/register', 'App\Http\Controllers\EditRegisterController@showRegisterForm')->name('admin.register');
-    Route::post('home/register/complete', 'App\Http\Controllers\Auth\RegisterController@create')->name('create_register');
+    Route::get('home/register', 'App\Http\Controllers\Admin\RegisterController@showRegisterForm')->name('admin.register');
+    Route::post('home/register/complete', 'App\Http\Controllers\Admin\RegisterController@create')->name('create_register');
 
     Route::get('home/users', 'App\Http\Controllers\UserAdminController@index')->name('show_users');
     Route::post('home/users/delete', 'App\Http\Controllers\UserAdminController@delete')->name('delete_user');

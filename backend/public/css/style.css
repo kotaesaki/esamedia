@@ -104,26 +104,26 @@ ul.cp_list {
     padding: 0.5em;
     list-style: none;
 }
-ul.cp_list li {
+ul.cp_list li.cp_parent {
     position: relative;
     padding: 0.5em 1em 0.5em 2.3em;
     margin-bottom: 5px;
     text-align: left;
 }
-ul.cp_list li:after,
-ul.cp_list li:before {
+ul.cp_list li.cp_parent:after,
+ul.cp_list li.cp_parent:before {
     content: "";
     position: absolute;
     transform: rotate(45deg);
 }
-ul.cp_list li:before {
+ul.cp_list li.cp_parent:before {
     top: 0.7em;
     left: 0.2em;
     width: 12px;
     height: 12px;
     border: 2px solid rgba(255, 143, 0, 1);
 }
-ul.cp_list li:after {
+ul.cp_list li.cp_parent:after {
     top: 0.9em;
     left: 0.7em;
     width: 14px;
@@ -250,7 +250,7 @@ ul.cp_list ul {
     width: 60%;
     height: auto;
     top: 0;
-    left: 4%;
+    left: 2%;
     font-size: 1.7vw;
     font-weight: bold;
     float: left;
@@ -265,28 +265,28 @@ ul.cp_list ul {
     position: relative;
     margin-top: 0;
     width: 60%;
-    left: 4%;
+    left: 2%;
     font-size: 0.7vw;
 }
 p.content-content {
     position: relative;
     top: 0;
     width: 58%;
-    left: 4%;
+    left: 2%;
     font-size: 0.9vw;
     float: left;
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
 
-.page {
+.page-page {
+    position: relative;
     box-shadow: 2px 2px 2px gray;
     border-radius: 4px 4px 4px 4px;
     margin-top: 5%;
+    padding: 5%;
 }
-.page-page {
-    position: relative;
-}
+
 .page-title {
     position: relative;
     margin-top: 3%;
@@ -296,6 +296,8 @@ p.content-content {
 .page-date {
     position: relative;
     margin-top: 3%;
+    margin-left: 2%;
+    float: left;
 }
 
 .page-img {
@@ -327,6 +329,89 @@ p.content-content {
     width: 100%;
     max-width: 100%;
     height: auto;
+}
+.page-comment {
+    position: relative;
+    box-shadow: 2px 2px 2px gray;
+    border-radius: 4px 4px 4px 4px;
+    margin-top: 5%;
+    padding: 5%;
+    height: auto;
+}
+
+.page-comment label {
+    position: relative;
+    font-size: 1.3rem;
+    width: 100%;
+}
+.page-comment input {
+    position: relative;
+    width: 100%;
+}
+.page-comment .name-mail {
+    width: 100%;
+}
+
+.page-comment .comment-author {
+    position: relative;
+    display: inline-block;
+    width: 45%;
+}
+.page-comment .comment-mail {
+    position: relative;
+    display: inline-block;
+    width: 45%;
+    margin-left: 9%;
+}
+.comment-author span,
+.comment-mail span,
+.comment-message span {
+    color: red;
+}
+
+.page-comment .author,
+.page-comment .email {
+    position: relative;
+    width: 100%;
+    text-align: left;
+}
+.page-comment .comment-message {
+    position: relative;
+    width: 100%;
+}
+.page-comment textarea {
+    position: relative;
+    width: 100%;
+    height: 10rem;
+}
+
+.comment-text {
+    position: relative;
+    width: 100%;
+}
+.comment-b {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.comment-s {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+}
+.comment-submit input {
+    position: relative;
+    width: 33%;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    background-color: #f28e3c;
 }
 
 @media screen and (max-width: 480px) {
@@ -410,5 +495,12 @@ p.content-content {
         height: 60vw;
         top: 110%;
         object-fit: cover;
+    }
+    .page-comment .comment-author {
+        width: 100%;
+    }
+    .page-comment .comment-mail {
+        width: 100%;
+        margin-left: 0;
     }
 }

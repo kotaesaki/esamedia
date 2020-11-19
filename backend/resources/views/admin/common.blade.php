@@ -88,7 +88,7 @@
         </ul>
       </div>
 
-      <a class="navbar-brand brand-name" href="#">管理者画面</a>
+      <a class="navbar-brand brand-name" href="{{route('admin.home')}}">管理ページ</a>
       <div class="profile">
         <ul class="">
           <li class="">

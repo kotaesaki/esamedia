@@ -15,7 +15,7 @@ class PageController extends Controller
                 $posts = POST::where('post_id', $request->post_id)->get();
                 $posts_new = POST::orderBy('post_date', 'desc')->take(10)->get();
 
-                $post_id = POST::select('post_id')->where('post_id', $request->post_id)->get();
+                $post_id = POST::select('post_id')->where('post_id', $request->post_id)->first();
 
                 $terms_parent = TERM::where('taxonomy', 'category')
                         ->where('parent', 0)
