@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
-use App\Models\User;
 use App\Models\Term;
 
 use Illuminate\Support\Facades\Auth;
@@ -46,19 +45,15 @@ class FormController extends Controller
     {
         $request->validate([
             'image' => 'required|file|image|mimes:png,jpeg|max:1024',
-            'post_title' => 'required|string|',
-            'post_content' => 'required|string|'
+            'post_title' => 'required|string|max:200',
+            'post_content' => 'required|string|',
+            'post_excerpt' => 'required|string|max:200'
         ]);
-
-
 
         try {
             $upload_image = $request->file('image');
             if ($upload_image) {
-                //アップロードされた画像を保存する
                 $path = $upload_image->store('uploads', "public");
-
-                //画像の保存に成功したらDBに記録する
                 if ($path) {
                     DB::beginTransaction();
                     try {
@@ -70,8 +65,9 @@ class FormController extends Controller
                                 'post_status' => 'publish',
                                 'post_date' => Carbon::now(),
                                 'post_modified' => Carbon::now(),
+                                'post_excerpt' => $request->post_excerpt,
                                 "file_name" => $upload_image->getClientOriginalName(),
-                                "file_path" => $path
+                                "file_path" => $path,
                             ]);
                         } elseif ($request->has('private')) {
                             POST::create([
@@ -81,9 +77,11 @@ class FormController extends Controller
                                 'post_status' => 'private',
                                 'post_date' => Carbon::now(),
                                 'post_modified' => Carbon::now(),
-                                "file_name" => $upload_image->getClientOriginalName(),
-                                "file_path" => $path
+                                'post_excerpt' => $request->post_excerpt,
+                                'file_name' => $upload_image->getClientOriginalName(),
+                                'file_path' => $path,
                             ]);
+                            dd($request->post_excerpt);
                         }
                         DB::commit();
                     } catch (\Exception $e) {
@@ -96,7 +94,6 @@ class FormController extends Controller
         }
         $post_id = POST::max('post_id');
         $posts = POST::where('post_id', $post_id)->get();
-
         if (is_array($request->category)) {
             $post1 = POST::find($post_id);
             $post1->terms()->detach();
@@ -132,7 +129,8 @@ class FormController extends Controller
         $request->validate([
             'image' => 'file|image|mimes:png,jpeg|max:1024',
             'post_title' => 'required|string|',
-            'post_content' => 'required|string|'
+            'post_content' => 'required|string|',
+            'post_excerpt' => 'required|string|max:200'
         ]);
 
         try {
@@ -156,6 +154,7 @@ class FormController extends Controller
                 $posts->post_title = $request->post_title;
                 $posts->post_content = $request->post_content;
                 $posts->post_modified = Carbon::now();
+                $posts->post_excerpt = $request->post_excerpt;
                 if ($request->has('publish')) {
                     $posts->post_status = 'publish';
                 } elseif ($request->has('private')) {

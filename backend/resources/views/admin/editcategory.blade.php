@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-group row">
                     <input type="hidden" name="id" value="{{ $term->term_id}}">
-                    <input type="submit" name="submit" id="submit" value="カテゴリーを更新">
+                    <input type="submit" name="submit" id="submit" class="btn-square-pop" value="カテゴリーを更新">
                 </div>
 
             </form>

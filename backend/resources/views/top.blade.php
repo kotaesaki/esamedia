@@ -23,7 +23,7 @@
                         alt="Card image cap">
                     <h2 class="content-title">{{ $post->post_title }}</h2><br>
                     <p class="content-date">{{ $post->post_date }}</p>
-                    <p class="content-content">{{ $post->post_content }}</p>
+                    <p class="content-content">{{ $post->post_excerpt }}</p>
                 </div>
 
             </a>

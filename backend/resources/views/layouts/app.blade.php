@@ -44,17 +44,14 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
 </head>
 
 <body style="background-color: #FCF9F2">
     <div id="app">
         <nav class="navbar navbar-expand-sm nav-top justify-content-center">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4"
-                aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="{{route('index')}}">ESALOG</a>
-
+            <a class="brand" href="{{route('index')}}">ESALOG</a>
         </nav>
 
 
@@ -93,19 +90,19 @@
                             <span class="text-s">CATEGORY</span>
                             <ul id="side-category" class="cp_list">
                                 @foreach($terms_parent as $term_parent)
-                                <li><a
+                                <li class="cp_parent"><a
                                         href="{{ route('search_category',['term_slug'=> $term_parent->term_slug])}}">{{ $term_parent->term_name}}</a>
                                 </li>
                                 <ul>
                                     @foreach($terms_child as $term_child)
                                     @if($term_parent->term_id == $term_child->parent)
-                                    <li><a
+                                    <li><i class="fas fa-angle-right"></i><a
                                             href="{{ route('search_category',['term_slug'=> $term_child->term_slug])}}">{{ $term_child->term_name}}</a>
                                     </li>
                                     <ul>
                                         @foreach($terms_child as $term_childd)
                                         @if($term_child->term_id == $term_childd->parent)
-                                        <li><a
+                                        <li><i class="fas fa-angle-right"></i><a
                                                 href="{{ route('search_category',['term_slug'=> $term_childd->term_slug])}}">{{ $term_childd->term_name}}</a>
                                         </li>
                                         @endif

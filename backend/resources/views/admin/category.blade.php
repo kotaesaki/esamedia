@@ -38,7 +38,7 @@
                     <textarea name="description" id="" cols="30" rows="10" class="category-textform"></textarea>
                 </div>
                 <div class="form-group row">
-                    <input type="submit" name="submit" id="submit" value="新規カテゴリーを追加">
+                    <input type="submit" name="submit" id="submit" class="btn-square-pop" value="新規カテゴリーを追加">
                 </div>
 
             </form>

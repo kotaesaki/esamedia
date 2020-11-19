@@ -38,64 +38,69 @@
                             <textarea id="FlexTexttitle" name="post_title" class="FlexTextarea__title"
                                 placeholder="記事タイトル">{{ $post->post_title }}</textarea>
                         </div>
-                        <div class="form-group">
-                            <div class="FlexTextarea">
-                                <div class="FlexTextarea__dummy" aria-hidden="true"></div>
-                                <textarea id="FlexTextarea" name="post_content" class="FlexTextarea__textarea"
-                                    placeholder="コンテンツを入力してください">{{ $post->post_content }}</textarea>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-5 col-md-offset-2 justify-content-center bg-white mt-5">
-                                    <div class="form-group">
-                                        <label for="category">カテゴリー</label>
-                                        <ul class="category_list">
-                                            @foreach($terms_parent as $term_parent)
+                    </div>
+                    <div class="form-group">
+                        <div class="FlexTextarea">
+                            <div class="FlexTextarea__dummy" aria-hidden="true"></div>
+                            <textarea id="FlexTextarea" name="post_content" class="FlexTextarea__textarea"
+                                placeholder="コンテンツを入力してください">{{ $post->post_content }}</textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 col-md-offset-2 justify-content-center bg-white mt-5">
+                            <div class="form-group">
+                                <label for="category">カテゴリー</label>
+                                <ul class="category_list">
+                                    @foreach($terms_parent as $term_parent)
+                                    <li><input type="checkbox" name="category[]"
+                                            value="{{ $term_parent->term_id}}">{{ $term_parent->term_name}}</li>
+                                    <ul>
+                                        @foreach($terms_child as $term_child)
+                                        @if($term_parent->term_id == $term_child->parent)
+                                        <li><input type="checkbox" name="category[]"
+                                                value="{{ $term_child->term_id}}">{{ $term_child->term_name}}
+                                        </li>
+                                        <ul>
+                                            @foreach($terms_child as $term_childd)
+                                            @if($term_child->term_id == $term_childd->parent)
                                             <li><input type="checkbox" name="category[]"
-                                                    value="{{ $term_parent->term_id}}">{{ $term_parent->term_name}}</li>
-                                            <ul>
-                                                @foreach($terms_child as $term_child)
-                                                @if($term_parent->term_id == $term_child->parent)
-                                                <li><input type="checkbox" name="category[]"
-                                                        value="{{ $term_child->term_id}}">{{ $term_child->term_name}}
-                                                </li>
-                                                <ul>
-                                                    @foreach($terms_child as $term_childd)
-                                                    @if($term_child->term_id == $term_childd->parent)
-                                                    <li><input type="checkbox" name="category[]"
-                                                            value="{{ $term_childd->term_id}}">{{ $term_childd->term_name}}
-                                                    </li>
-                                                    @endif
-                                                    @endforeach
-                                                </ul>
-                                                @endif
-                                                @endforeach
-                                            </ul>
+                                                    value="{{ $term_childd->term_id}}">{{ $term_childd->term_name}}
+                                            </li>
+                                            @endif
                                             @endforeach
                                         </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-5 col-md-offset-2 justify-content-center bg-white ml-5 mt-5">
-                                    <div class="form-group">
-                                        <label for="tag">タグ</label><br>
-                                        @foreach($terms_tag as $term_tag)
-                                        <input type="checkbox" name="tags[]" id="tag"
-                                            value="{{$term_tag->term_id}}">{{$term_tag->term_name}}
+                                        @endif
                                         @endforeach
-                                    </div>
-                                </div>
+                                    </ul>
+                                    @endforeach
+                                </ul>
                             </div>
-
                         </div>
-                        <input type="hidden" name="post_id" value="{{ $post->post_id }}">
-                        <div class="form-group">
-                            <button type="submit" name="publish" value="publish" class="btn-square-pop">公開する</button>
-                            <button type="submit" name="private" value="private"
-                                class="btn-square-shitagaki">下書き保存</button>
+                        <div class="col-md-5 col-md-offset-2 justify-content-center bg-white ml-5 mt-5">
+                            <div class="form-group">
+                                <label for="tag">タグ</label><br>
+                                @foreach($terms_tag as $term_tag)
+                                <input type="checkbox" name="tags[]" id="tag"
+                                    value="{{$term_tag->term_id}}">{{$term_tag->term_name}}
+                                @endforeach
+                            </div>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="post_excerpt">
+                            <label for="post_excerpt">抜粋</label>
+                            <textarea name="post_excerpt" id="post_excerpt"
+                                placeholder="TOPページに載せたい文章を書いてください">{{ $post->post_excerpt}}</textarea>
+                        </div>
+                    </div>
+                    <input type="hidden" name="post_id" value="{{ $post->post_id }}">
+                    <div class="form-group">
+                        <button type="submit" name="publish" value="publish" class="btn-square-pop">公開する</button>
+                        <button type="submit" name="private" value="private" class="btn-square-shitagaki">下書き保存</button>
+                    </div>
 
-                        @endforeach
                 </form>
+                @endforeach
 
 
 

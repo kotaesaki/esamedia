@@ -24,6 +24,7 @@ class Post extends Model
         'file_path',
         'post_date',
         'post_modified',
+        'post_excerpt'
     ];
     protected $primaryKey = 'post_id';
 
@@ -42,11 +43,13 @@ class Post extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+    public function comment()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
     public function parse()
     {
-        //newでインスタンスを作る
         $parser = new Markdown();
-        //bodyをパースする
         return $parser->parse($this->post_content);
     }
     public function getMarkBodyAttribute()
