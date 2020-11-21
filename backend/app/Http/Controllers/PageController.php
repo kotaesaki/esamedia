@@ -16,15 +16,17 @@ class PageController extends Controller
 
                 $posts = POST::where('post_id', $request->post_id)->get();
                 $posts_new = POST::orderBy('post_date', 'desc')->take(10)->get();
-
                 $post_id = POST::select('post_id')->where('post_id', $request->post_id)->first();
-                $terms_parent = TERM::where('taxonomy', 'category')
+                $terms_parent = TERM::select('term_id', 'term_slug', 'term_name')
+                        ->where('taxonomy', 'category')
                         ->where('parent', 0)
                         ->get();
-                $terms_child = TERM::where('taxonomy', 'category')
+                $terms_child = TERM::select('term_id', 'term_slug', 'term_name', 'parent')
+                        ->where('taxonomy', 'category')
                         ->where('parent', '>=', 1)
                         ->get();
-                $terms_tag = TERM::where('taxonomy', 'tag')->get();
+                $terms_tag = TERM::select('term_slug', 'term_name')
+                        ->where('taxonomy', 'tag')->get();
                 $posts_tag = TERM::whereHas('posts', function ($query) use ($post_id) {
                         $query->whereIn('posts.post_id', $post_id);
                 })
