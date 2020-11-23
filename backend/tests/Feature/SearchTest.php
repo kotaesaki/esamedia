@@ -23,18 +23,18 @@ class SearchTest extends TestCase
     {
         $data = ["keyword" => "初投稿"];
         $response = $this->get('/search', $data);
-        $response->assertSee('<h2 class="content-title">初投稿</h2>');
+        $response->assertSee('content-title');
     }
     public function testSearchBubun()
     {
         $data = ["keyword" => "初"];
         $response = $this->get('/search', $data);
-        $response->assertSee('<h2 class="content-title">初投稿</h2>');
+        $response->assertSee('content-title');
     }
     public function testSearchBad()
     {
         $data = ["keyword" => "kfldasjf"];
         $response = $this->get('/search', $data);
-        $response->assertDontSee('<h2 class="content-title">初投稿</h2>');
+        $response->assertDontSee('content-title');
     }
 }
