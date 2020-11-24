@@ -21,6 +21,7 @@ class PageTest extends TestCase
         $response = $this->get('/pages/1');
         $response->assertStatus(200);
     }
+
     public function testSendFull()
     {
         $comment = Comment::factory()->create();

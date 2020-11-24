@@ -22,19 +22,31 @@ class SearchTest extends TestCase
     public function testSearchFull()
     {
         $data = ["keyword" => "初投稿"];
-        $response = $this->get('/search', $data);
-        $response->assertSee('content-title');
+        $response = $this->json('GET', '/search', $data);
+        $response->assertSee('テスト投稿ですよ');
     }
     public function testSearchBubun()
     {
         $data = ["keyword" => "初"];
-        $response = $this->get('/search', $data);
-        $response->assertSee('content-title');
+        $response = $this->json('GET', '/search', $data);
+        $response->assertSee('テスト投稿ですよ');
     }
     public function testSearchBad()
     {
         $data = ["keyword" => "kfldasjf"];
-        $response = $this->get('/search', $data);
-        $response->assertDontSee('content-title');
+        $response = $this->json('GET', '/search', $data);
+        $response->assertDontSee('テスト投稿ですよ');
+    }
+    public function testSearchCategory()
+    {
+        $response = $this->get('/category/child1');
+        $response->assertStatus(200);
+        $response->assertSee('Laravelのロゴです');
+    }
+    public function testSearchCategoryBad()
+    {
+        $response = $this->get('/category/child2');
+        $response->assertStatus(200);
+        $response->assertDontSee('Laravelのロゴです');
     }
 }
