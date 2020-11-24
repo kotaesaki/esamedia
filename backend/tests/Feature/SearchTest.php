@@ -21,21 +21,21 @@ class SearchTest extends TestCase
 
     public function testSearchFull()
     {
-        $data = ["keyword" => "初投稿"];
+        $data = ["keyword" => "Laravelの記事"];
         $response = $this->json('GET', '/search', $data);
-        $response->assertSee('テスト投稿ですよ');
+        $response->assertSee('Laravelのロゴです');
     }
     public function testSearchBubun()
     {
-        $data = ["keyword" => "初"];
+        $data = ["keyword" => "Lara"];
         $response = $this->json('GET', '/search', $data);
-        $response->assertSee('テスト投稿ですよ');
+        $response->assertSee('Laravelのロゴです');
     }
     public function testSearchBad()
     {
         $data = ["keyword" => "kfldasjf"];
         $response = $this->json('GET', '/search', $data);
-        $response->assertDontSee('テスト投稿ですよ');
+        $response->assertDontSee('Laravelのロゴです');
     }
     public function testSearchCategory()
     {
@@ -46,6 +46,18 @@ class SearchTest extends TestCase
     public function testSearchCategoryBad()
     {
         $response = $this->get('/category/child2');
+        $response->assertStatus(200);
+        $response->assertDontSee('Laravelのロゴです');
+    }
+    public function testSearchTag()
+    {
+        $response = $this->get('/tag/Test1');
+        $response->assertStatus(200);
+        $response->assertSee('Laravelのロゴです');
+    }
+    public function testSearchtagBad()
+    {
+        $response = $this->get('/tag/test2');
         $response->assertStatus(200);
         $response->assertDontSee('Laravelのロゴです');
     }
