@@ -17,9 +17,6 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('comment_id')
                 ->unsigned()
                 ->comment('コメントID（自動採番）');
-            $table->foreignId('comment_post_id')
-                ->constrained('posts.post_id')
-                ->comment('post_id');
             $table->string('comment_author', 100)
                 ->comment('コメント投稿者');
             $table->string('comment_author_email', 100)

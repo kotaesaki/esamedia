@@ -14,14 +14,17 @@ class TopController extends Controller
         $posts = Post::where('post_status', 'publish')->orderBy('post_modified', 'desc')->simplePaginate(10);
         $posts_new = POST::where('post_status', 'publish')->orderBy('post_date', 'desc')->take(10)->get();
 
-        $terms_parent = TERM::where('taxonomy', 'category')
+        $terms_parent = TERM::select('term_id', 'term_slug', 'term_name')
+            ->where('taxonomy', 'category')
             ->where('parent', 0)
             ->get();
-        $terms_child = TERM::where('taxonomy', 'category')
+        $terms_child = TERM::select('term_id', 'term_slug', 'term_name', 'parent')
+            ->where('taxonomy', 'category')
             ->where('parent', '>=', 1)
             ->get();
 
-        $terms_tag = TERM::where('taxonomy', 'tag')->get();
+        $terms_tag = TERM::select('term_slug', 'term_name')
+            ->where('taxonomy', 'tag')->get();
         return view('top', [
             'posts' => $posts,
             'posts_new' => $posts_new,

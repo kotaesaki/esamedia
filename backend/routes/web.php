@@ -19,9 +19,10 @@ Route::get('/pages/{post_id?}', 'App\Http\Controllers\PageController@showPage')-
 Route::get('/search', 'App\Http\Controllers\SearchController@index')->name('search');
 Route::get('/category/{term_slug}', 'App\Http\Controllers\SearchController@searchCategory')->name('search_category');
 Route::get('/tag/{term_slug}', 'App\Http\Controllers\SearchController@searchTag')->name('search_tag');
-
 Route::post('/pages/{post_id}/comment', 'App\Http\Controllers\PageController@send')->name('send_comment');
 
+Route::get('/register', 'App\Http\Controllers\Admin\RegisterController@showRegisterForm')->name('admin.register1');
+Route::post('/complete', 'App\Http\Controllers\Admin\RegisterController@create')->name('create_register1');
 
 
 Auth::routes();

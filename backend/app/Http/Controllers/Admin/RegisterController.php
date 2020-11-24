@@ -17,10 +17,6 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function showRegisterForm()
     {
@@ -50,6 +46,6 @@ class RegisterController extends Controller
             DB::rollback();
         }
 
-        return redirect('admin/home/users');
+        return redirect('/');
     }
 }
