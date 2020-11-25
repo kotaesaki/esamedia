@@ -60,7 +60,8 @@ class FilesystemAdapter implements CloudFilesystemContract
 
         foreach ($paths as $path) {
             PHPUnit::assertTrue(
-                $this->exists($path), "Unable to find a file at path [{$path}]."
+                $this->exists($path),
+                "Unable to find a file at path [{$path}]."
             );
         }
 
@@ -79,7 +80,8 @@ class FilesystemAdapter implements CloudFilesystemContract
 
         foreach ($paths as $path) {
             PHPUnit::assertFalse(
-                $this->exists($path), "Found unexpected file at path [{$path}]."
+                $this->exists($path),
+                "Found unexpected file at path [{$path}]."
             );
         }
 
@@ -105,7 +107,7 @@ class FilesystemAdapter implements CloudFilesystemContract
      */
     public function missing($path)
     {
-        return ! $this->exists($path);
+        return !$this->exists($path);
     }
 
     /**
@@ -122,7 +124,7 @@ class FilesystemAdapter implements CloudFilesystemContract
             $adapter = $adapter->getAdapter();
         }
 
-        return $adapter->getPathPrefix().$path;
+        return $adapter->getPathPrefix() . $path;
     }
 
     /**
@@ -158,7 +160,9 @@ class FilesystemAdapter implements CloudFilesystemContract
         $filename = $name ?? basename($path);
 
         $disposition = $response->headers->makeDisposition(
-            $disposition, $filename, $this->fallbackName($filename)
+            $disposition,
+            $filename,
+            $this->fallbackName($filename)
         );
 
         $response->headers->replace($headers + [
@@ -211,14 +215,16 @@ class FilesystemAdapter implements CloudFilesystemContract
     public function put($path, $contents, $options = [])
     {
         $options = is_string($options)
-                     ? ['visibility' => $options]
-                     : (array) $options;
+            ? ['visibility' => $options]
+            : (array) $options;
 
         // If the given contents is actually a file or uploaded file instance than we will
         // automatically store the file using a stream. This provides a convenient path
         // for the developer to store streams without managing them manually in code.
-        if ($contents instanceof File ||
-            $contents instanceof UploadedFile) {
+        if (
+            $contents instanceof File ||
+            $contents instanceof UploadedFile
+        ) {
             return $this->putFile($path, $contents, $options);
         }
 
@@ -227,8 +233,8 @@ class FilesystemAdapter implements CloudFilesystemContract
         }
 
         return is_resource($contents)
-                ? $this->driver->putStream($path, $contents, $options)
-                : $this->driver->put($path, $contents, $options);
+            ? $this->driver->putStream($path, $contents, $options)
+            : $this->driver->put($path, $contents, $options);
     }
 
     /**
@@ -263,7 +269,9 @@ class FilesystemAdapter implements CloudFilesystemContract
         // they provide better performance than alternatives. Once we write the file this
         // stream will get closed automatically by us so the developer doesn't have to.
         $result = $this->put(
-            $path = trim($path.'/'.$name, '/'), $stream, $options
+            $path = trim($path . '/' . $name, '/'),
+            $stream,
+            $options
         );
 
         if (is_resource($stream)) {
@@ -311,7 +319,7 @@ class FilesystemAdapter implements CloudFilesystemContract
     public function prepend($path, $data, $separator = PHP_EOL)
     {
         if ($this->exists($path)) {
-            return $this->put($path, $data.$separator.$this->get($path));
+            return $this->put($path, $data . $separator . $this->get($path));
         }
 
         return $this->put($path, $data);
@@ -328,7 +336,7 @@ class FilesystemAdapter implements CloudFilesystemContract
     public function append($path, $data, $separator = PHP_EOL)
     {
         if ($this->exists($path)) {
-            return $this->put($path, $this->get($path).$separator.$data);
+            return $this->put($path, $this->get($path) . $separator . $data);
         }
 
         return $this->put($path, $data);
@@ -348,7 +356,7 @@ class FilesystemAdapter implements CloudFilesystemContract
 
         foreach ($paths as $path) {
             try {
-                if (! $this->driver->delete($path)) {
+                if (!$this->driver->delete($path)) {
                     $success = false;
                 }
             } catch (FileNotFoundException $e) {
@@ -483,12 +491,13 @@ class FilesystemAdapter implements CloudFilesystemContract
         // If an explicit base URL has been set on the disk configuration then we will use
         // it as the base URL instead of the default path. This allows the developer to
         // have full control over the base path for this filesystem's generated URLs.
-        if (! is_null($url = $this->driver->getConfig()->get('url'))) {
-            return $this->concatPathToUrl($url, $adapter->getPathPrefix().$path);
+        if (!is_null($url = $this->driver->getConfig()->get('url'))) {
+            return $this->concatPathToUrl($url, $adapter->getPathPrefix() . $path);
         }
 
         return $adapter->getClient()->getObjectUrl(
-            $adapter->getBucket(), $adapter->getPathPrefix().$path
+            $adapter->getBucket(),
+            $adapter->getPathPrefix() . $path
         );
     }
 
@@ -503,8 +512,8 @@ class FilesystemAdapter implements CloudFilesystemContract
         $config = $this->driver->getConfig();
 
         return $config->has('url')
-                ? $this->concatPathToUrl($config->get('url'), $path)
-                : $path;
+            ? $this->concatPathToUrl($config->get('url'), $path)
+            : $path;
     }
 
     /**
@@ -524,7 +533,7 @@ class FilesystemAdapter implements CloudFilesystemContract
             return $this->concatPathToUrl($config->get('url'), $path);
         }
 
-        $path = '/storage/'.$path;
+        $path = '/storage/' . $path;
 
         // If the path contains "storage/public", it probably means the developer is using
         // the default disk to generate the path instead of the "public" disk like they
@@ -578,11 +587,12 @@ class FilesystemAdapter implements CloudFilesystemContract
 
         $command = $client->getCommand('GetObject', array_merge([
             'Bucket' => $adapter->getBucket(),
-            'Key' => $adapter->getPathPrefix().$path,
+            'Key' => $adapter->getPathPrefix() . $path,
         ], $options));
 
         return (string) $client->createPresignedRequest(
-            $command, $expiration
+            $command,
+            $expiration
         )->getUri();
     }
 
@@ -595,7 +605,7 @@ class FilesystemAdapter implements CloudFilesystemContract
      */
     protected function concatPathToUrl($url, $path)
     {
-        return rtrim($url, '/').'/'.ltrim($path, '/');
+        return rtrim($url, '/') . '/' . ltrim($path, '/');
     }
 
     /**

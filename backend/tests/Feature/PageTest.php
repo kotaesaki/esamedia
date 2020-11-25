@@ -2,25 +2,24 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use App\Models\Post;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Models\Comment;
-use App\Http\Controllers\PageController;
 
 
 
 
 class PageTest extends TestCase
 {
+    use DatabaseTransactions;
+
     public function testShowPage()
     {
         $response = $this->get('/pages/1');
         $response->assertStatus(200);
     }
+
     public function testSendFull()
     {
         $comment = Comment::factory()->create();

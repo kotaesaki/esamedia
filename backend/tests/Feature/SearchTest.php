@@ -2,8 +2,7 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+
 use Tests\TestCase;
 
 class SearchTest extends TestCase
@@ -21,20 +20,44 @@ class SearchTest extends TestCase
 
     public function testSearchFull()
     {
-        $data = ["keyword" => "初投稿"];
-        $response = $this->get('/search', $data);
-        $response->assertSee('content-title');
+        $data = ["keyword" => "Laravelの記事"];
+        $response = $this->json('GET', '/search', $data);
+        $response->assertSee('Laravelのロゴです');
     }
     public function testSearchBubun()
     {
-        $data = ["keyword" => "初"];
-        $response = $this->get('/search', $data);
-        $response->assertSee('content-title');
+        $data = ["keyword" => "Lara"];
+        $response = $this->json('GET', '/search', $data);
+        $response->assertSee('Laravelのロゴです');
     }
     public function testSearchBad()
     {
         $data = ["keyword" => "kfldasjf"];
-        $response = $this->get('/search', $data);
-        $response->assertDontSee('content-title');
+        $response = $this->json('GET', '/search', $data);
+        $response->assertDontSee('Laravelのロゴです');
+    }
+    public function testSearchCategory()
+    {
+        $response = $this->get('/category/child1');
+        $response->assertStatus(200);
+        $response->assertSee('Laravelのロゴです');
+    }
+    public function testSearchCategoryBad()
+    {
+        $response = $this->get('/category/child2');
+        $response->assertStatus(200);
+        $response->assertDontSee('Laravelのロゴです');
+    }
+    public function testSearchTag()
+    {
+        $response = $this->get('/tag/Test1');
+        $response->assertStatus(200);
+        $response->assertSee('Laravelのロゴです');
+    }
+    public function testSearchtagBad()
+    {
+        $response = $this->get('/tag/test2');
+        $response->assertStatus(200);
+        $response->assertDontSee('Laravelのロゴです');
     }
 }
