@@ -19,18 +19,13 @@
                     公開ステータス</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <form method="get" action="{{route('admin.home')}}">
-                        {{ csrf_field()}}
                         <input type="hidden" name="id" value="">
                         <input type="submit" value="すべて" class="dropdown-item">
                     </form>
                     <form method="get" action="{{route('post_getPublish')}}">
-                        {{ csrf_field()}}
-                        <input type="hidden" name="id" value="#">
                         <input type="submit" value="公開中" class="dropdown-item">
                     </form>
                     <form method="get" action="{{route('post_getPrivate')}}">
-                        {{ csrf_field()}}
-                        <input type="hidden" name="id" value="#">
                         <input type="submit" value="下書き" class="dropdown-item">
                     </form>
                 </div>

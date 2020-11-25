@@ -41,7 +41,6 @@
                                     •••</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <form action="{{ route('confirm_user') }}" method="GET">
-                                        @csrf
                                         <input type="hidden" name="id" value="{{ $user->id}}">
                                         <input type="submit" name="delete" class="dropdown-item" value="削除"
                                             onclick='return confirm("このユーザーを削除しますか？");'>
