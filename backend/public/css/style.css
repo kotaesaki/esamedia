@@ -37,7 +37,6 @@ form > img.add-image {
 }
 .contents {
     position: relative;
-    top: -5vw;
 }
 .slider {
     position: relative;
@@ -497,7 +496,6 @@ p.content-content {
         font-size: 1rem;
     }
     .contents {
-        top: -17vw;
     }
     .content-item {
         height: auto;
