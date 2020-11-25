@@ -1,4 +1,4 @@
-@extends('layouts.test')
+@extends('admin.common')
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('ユーザー登録') }}</div>
 
                 <div class="card-body">
-                    <form method="post" action="{{ route('create_register1') }}">
+                    <form method="post" action="{{ route('create_register') }}">
                         @csrf
 
                         <div class="form-group row">

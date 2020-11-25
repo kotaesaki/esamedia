@@ -46,6 +46,6 @@ class RegisterController extends Controller
             DB::rollback();
         }
 
-        return redirect('/');
+        return redirect('/admin/home/users');
     }
 }
