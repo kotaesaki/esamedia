@@ -30,7 +30,8 @@ class PostFactory extends Factory
             'post_modified' => $this->faker->datetime($max = 'now', $timezone = date_default_timezone_get()),
             'file_name' => 'index.png',
             'file_path' => 'Desktop/',
-            'post_status' => 'private',
+            'post_status' => 'publish',
+            'post_excerpt' => $this->faker->realText(100)
         ];
     }
 }

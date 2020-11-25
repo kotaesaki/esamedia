@@ -138,9 +138,7 @@ class FormController extends Controller
 
             $upload_image = $request->file('image');
             if ($upload_image) {
-                //アップロードされた画像を保存する
                 $path = $upload_image->store('uploads', "public");
-                //画像の保存に成功したらDBに記録する
                 if ($path) {
                     try {
                         $posts->file_name = $upload_image->getClientOriginalName();

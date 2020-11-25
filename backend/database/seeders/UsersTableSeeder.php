@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class PostsTableSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,6 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Post::factory(10)->create();
+        \App\Models\User::factory(10)->create();
     }
 }

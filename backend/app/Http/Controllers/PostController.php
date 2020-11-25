@@ -26,7 +26,7 @@ class PostController extends Controller
         $user1 = User::find(Auth::user()->id);
         $user_status = $user1->user_status;
 
-        $posts = POST::where('post_status', 'publish')->orderBy('post_modified', 'desc')->get();
+        $posts = POST::where('post_status', 'publish')->orderBy('post_modified', 'desc')->simplePaginate(10);
         return view('admin.list', [
             'user_status' => $user_status,
             'posts' => $posts
@@ -38,7 +38,7 @@ class PostController extends Controller
         $user1 = User::find(Auth::user()->id);
         $user_status = $user1->user_status;
 
-        $posts = POST::where('post_status', 'private')->orderBy('post_modified', 'desc')->get();
+        $posts = POST::where('post_status', 'private')->orderBy('post_modified', 'desc')->simplePaginate(10);
         return view('admin.list', [
             'user_status' => $user_status,
             'posts' => $posts
