@@ -63,7 +63,6 @@ class LoginController extends Controller
         if (Auth::attempt(['login_id' => $login_id, 'password' => $password])) {
             return redirect()->route('admin.showHome');
         }
-    
         return redirect('/admin/login');
         
     }
