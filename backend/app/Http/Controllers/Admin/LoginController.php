@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -53,5 +54,17 @@ class LoginController extends Controller
     public function username()
     {
         return 'login_id';
+    }
+    public function guestLogin()
+    {
+        $login_id = 'guest';
+        $password = 'guestuser';
+
+        if (Auth::attempt(['login_id' => $login_id, 'password' => $password])) {
+            return redirect()->route('admin.showHome');
+        }
+    
+        return redirect('/admin/login');
+        
     }
 }

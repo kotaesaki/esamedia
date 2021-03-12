@@ -1,0 +1,5 @@
+vendor/
+/composer.json
+/composer.lock
+/package-lock.json
+*.DS_Store

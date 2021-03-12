@@ -38,7 +38,7 @@
 
   <!-- Styles -->
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-  <link href="{{ mix('css/admin.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
@@ -76,6 +76,8 @@
             <a href="{{route('show_users')}}" @if(Request::is('admin/home/users')) class="active" @else
               class="non-active" @endif><i class="fas fa-users"></i> Users List</a>
           </li>
+          @endif
+
           <li>
             <a href="{{route('admin.register')}}" @if(Request::is('admin/home/register')) class="active" @else
               class="non-active" @endif><i class="fas fa-user-plus"></i> User Register</a>
@@ -88,7 +90,10 @@
             <a href="{{route('get_tag')}}" @if(Request::is('admin/home/tag')) class="active" @else class="non-active"
               @endif><i class="fas fa-tags"></i> Tags</a>
           </li>
-          @endif
+          <li>
+            <a href="{{route('index')}}" class="non-active" target="_blank">
+              LOGLOG</a>
+          </li>
         </ul>
       </div>
 
@@ -137,6 +142,8 @@
             <a href="{{route('show_users')}}" @if(Request::is('admin/home/users')) class="active" @else
               class="non-active" @endif><i class="fas fa-users"></i> Users List</a>
           </li>
+          @endif
+
           <li>
             <a href="{{route('admin.register')}}" @if(Request::is('admin/home/register')) class="active" @else
               class="non-active" @endif><i class="fas fa-user-plus"></i> User Register</a>
@@ -149,8 +156,10 @@
             <a href="{{route('get_tag')}}" @if(Request::is('admin/home/tag')) class="active" @else class="non-active"
               @endif><i class="fas fa-tags"></i> Tags</a>
           </li>
-          @endif
-
+          <li>
+            <a href="{{route('index')}}" class="non-active" target="_blank">
+              LOGLOG</a>
+          </li>
         </ul>
 
       </nav>
@@ -162,7 +171,7 @@
 
     </div>
     <footer class="d-flex align-items-center justify-content-center footer">
-      <span style="color: #7F7F7F;">COPYRIGHT@KOTA ESAKI</span>
+      <span style="color: #7F7F7F;">COPYRIGHT@LOGLOG</span>
     </footer>
   </div>
 
