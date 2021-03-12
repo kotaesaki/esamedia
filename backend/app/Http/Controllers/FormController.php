@@ -9,6 +9,7 @@ use App\Models\Term;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 
 class FormController extends Controller
@@ -53,7 +54,8 @@ class FormController extends Controller
         try {
             $upload_image = $request->file('image');
             if ($upload_image) {
-                $path = $upload_image->store('uploads', "public");
+                $disk = Storage::disk('s3')->putFile('/loglog', $upload_image,'public');
+                $path = Storage::disk('s3')->url($disk);
                 if ($path) {
                     DB::beginTransaction();
                     try {
@@ -138,7 +140,8 @@ class FormController extends Controller
 
             $upload_image = $request->file('image');
             if ($upload_image) {
-                $path = $upload_image->store('uploads', "public");
+                $disk = Storage::disk('s3')->putFile('/loglog', $upload_image,'public');
+                $path = Storage::disk('s3')->url($disk);
                 if ($path) {
                     try {
                         $posts->file_name = $upload_image->getClientOriginalName();

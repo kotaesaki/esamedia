@@ -109,7 +109,7 @@
                     new Vue({
         el: '#file-preview',
         data: {
-            imageData: '{{ Storage::url($post->file_path) }}' //画像格納用変数
+            imageData: '{{ $post->file_path }}' //画像格納用変数
         },
         methods: {
             onFileChange(e) {
