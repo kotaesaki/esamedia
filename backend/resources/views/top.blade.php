@@ -7,7 +7,7 @@
     <div class="slider">
         @foreach($posts_new as $post_new)
         <div><a href="{{ route('show_page',['post_id' => $post_new->post_id])}}">
-                <img src="{{Storage::url($post_new->file_path)}}" alt="image01">
+                <img src="{{$post_new->file_path}}" alt="image01">
                 <h2>{{ $post_new->post_title }}</h2>
             </a>
         </div>
@@ -19,7 +19,7 @@
         <div class="content-item d-flex justify-content-center">
             <a href="{{ route('show_page',['post_id' => $post->post_id])}}">
                 <div class="box-img">
-                    <img class="content-img post-image-col" src="{{ Storage::url($post->file_path) }}"
+                    <img class="content-img post-image-col" src="{{ $post->file_path}}"
                         alt="Card image cap">
                     <h2 class="content-title">{{ $post->post_title }}</h2><br>
                     <p class="content-date">{{ $post->post_date }}</p>

@@ -38,10 +38,10 @@
     </style>
 
     <!-- Styles -->
-    <link href="{{ asset('css/slick-theme.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/slick.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/slick-theme.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/slick.css') }}" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/style.css') }}" rel="stylesheet">
 
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
@@ -51,7 +51,7 @@
 <body style="background-color: #FCF9F2">
     <div id="app">
         <nav class="navbar navbar-expand-sm nav-top justify-content-center">
-            <a class="brand" href="{{route('index')}}">ESALOG</a>
+            <a class="brand" href="{{route('index')}}">LOGLOG</a>
         </nav>
 
 
@@ -77,7 +77,7 @@
                             <div class="new-box d-flex justify-content-center">
                                 <a href="{{ route('show_page',['post_id' => $post_new->post_id])}}">
                                     <div class="box-img-new">
-                                        <img class="content-img-new" src="{{ Storage::url($post_new->file_path) }}"
+                                        <img class="content-img-new" src="{{ $post_new->file_path }}"
                                             alt="Card image cap">
                                         <h2 class="content-title-new">{{ $post_new->post_title }}</h2>
                                     </div>

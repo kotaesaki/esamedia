@@ -15,7 +15,7 @@
         <p class="page-date"><i class="fas fa-wrench"></i>：{{ $post->post_modified }}</p>
         @endif
         <div class="img-box">
-            <img class="page-img" src="{{ Storage::url($post->file_path) }}" alt="">
+            <img class="page-img" src="{{ $post->file_path}}" alt="">
         </div>
         <div class="page-content">{!! $post->mark_body !!}</div>
         @endforeach
