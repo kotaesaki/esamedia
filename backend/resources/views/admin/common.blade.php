@@ -71,7 +71,6 @@
               class="non-active" @endif><i class="fas fa-comments"></i> Comments</a>
           </li>
 
-          @if(Auth::user()->user_status == "admin")
           <li>
             <a href="{{route('show_users')}}" @if(Request::is('admin/home/users')) class="active" @else
               class="non-active" @endif><i class="fas fa-users"></i> Users List</a>
@@ -88,7 +87,6 @@
             <a href="{{route('get_tag')}}" @if(Request::is('admin/home/tag')) class="active" @else class="non-active"
               @endif><i class="fas fa-tags"></i> Tags</a>
           </li>
-          @endif
         </ul>
       </div>
 
@@ -132,7 +130,6 @@
             <a href="{{route('show_comment')}}" @if(Request::is('admin/home/comment')) class="active" @else
               class="non-active" @endif><i class="fas fa-comments"></i> Comments</a>
           </li>
-          @if(Auth::user()->user_status == "admin")
           <li>
             <a href="{{route('show_users')}}" @if(Request::is('admin/home/users')) class="active" @else
               class="non-active" @endif><i class="fas fa-users"></i> Users List</a>
@@ -149,7 +146,6 @@
             <a href="{{route('get_tag')}}" @if(Request::is('admin/home/tag')) class="active" @else class="non-active"
               @endif><i class="fas fa-tags"></i> Tags</a>
           </li>
-          @endif
 
         </ul>
 
