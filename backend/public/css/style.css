@@ -1,10 +1,30 @@
-ul#dashbar > li {
-    padding-top: 30px;
+body {
+    color: #424242;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans", Meiryo, sans-serif;
+}
+a {
+    color: hsl(0, 0%, 26%);
+    text-decoration: none;
+}
+a:hover {
+    color: hsl(0, 0%, 26%);
+    text-decoration: none;
 }
 
-ul#dashbar > li > a {
-    color: aliceblue;
-    font-size: 20px;
+nav.nav-top {
+    background-color: #ffffff;
+    box-shadow: 2px 2px 4px gray;
+    border-radius: 4px 4px 4px 4px;
+    height: 60px;
+}
+.brand {
+    display: inline-block;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    font-size: 1.125rem;
+    line-height: inherit;
+    white-space: nowrap;
 }
 
 form > img.add-image {
@@ -13,18 +33,20 @@ form > img.add-image {
 }
 
 .image-btn {
-    display: none; /* アップロードボタンのスタイルを無効にする */
+    display: none;
 }
-
+.contents {
+    position: relative;
+}
 .slider {
     position: relative;
-    margin: 50px auto;
+    margin: 20px auto;
     width: 100%;
     opacity: 0;
 }
 .slider img {
     position: relative;
-    height: 28vw;
+    height: 23vw;
     width: 100%;
     object-fit: cover;
 }
@@ -33,7 +55,7 @@ form > img.add-image {
     top: -10vw;
     left: 10%;
     width: 80%;
-    height: 50%;
+    height: 5%;
     color: #ffffff;
     font-weight: bold;
     font-size: 2vw;
@@ -85,38 +107,129 @@ form > img.add-image {
     font-weight: bold;
     font-size: 1rem;
 }
+
+ul.cp_list {
+    padding: 0.5em;
+    list-style: none;
+}
+ul.cp_list li.cp_parent {
+    position: relative;
+    padding: 0.5em 1em 0.5em 2.3em;
+    margin-bottom: 5px;
+    text-align: left;
+}
+ul.cp_list li.cp_parent:after,
+ul.cp_list li.cp_parent:before {
+    content: "";
+    position: absolute;
+    transform: rotate(45deg);
+}
+ul.cp_list li.cp_parent:before {
+    top: 0.7em;
+    left: 0.2em;
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(255, 143, 0, 1);
+}
+ul.cp_list li.cp_parent:after {
+    top: 0.9em;
+    left: 0.7em;
+    width: 14px;
+    height: 14px;
+    background: rgba(255, 143, 0, 0.5);
+    transform: rotate(60deg);
+}
+
+ul.cp_list ul {
+    position: relative;
+    padding: 0.5em 1em 0.5em 2.3em;
+    margin-bottom: 5px;
+    text-align: left;
+    list-style: none;
+}
+.btn-flat-dashed-border {
+    display: inline-block;
+    padding: 0.2em 0.7em;
+    margin: 0.4em;
+    text-decoration: none;
+    color: #424242;
+    border: dashed 1px #f28e3c;
+    border-radius: 3px;
+    transition: 0.4s;
+}
+
+.btn-flat-dashed-border:hover {
+    border-style: dotted;
+    background: #f28e3c;
+    color: #ffffff;
+}
+
+.btn-flat-dashed-border2 {
+    display: inline-block;
+    position: relative;
+    padding: 0.2em 0.7em;
+    margin: 8% 2% 0 0;
+    text-decoration: none;
+    color: #ffffff;
+    border: dashed 1px #f28e3c;
+    background: #f28e3c;
+    border-radius: 3px;
+    transition: 0.4s;
+    z-index: 1000;
+}
+
+.btn-flat-dashed-border2:hover {
+    border-style: dotted;
+    background: #f28e3c;
+    color: #ffffff;
+}
+
 .new-box {
     position: relative;
     width: 100%;
-    height: 13vh;
-    margin-bottom: 20px;
-    margin-top: 20px;
-
+    height: 10vh;
+    margin-bottom: 30px;
+    margin-top: 30px;
     text-align: left;
+    z-index: 100;
+    transition: 0.2s;
 }
-.box-img-new {
+.new-box:hover {
+    color: #79c6b6;
 }
+
 .content-img-new {
-    position: absolute;
-    top: 15%;
-    left: 5%;
-    width: 7vw;
-    height: 4.5vw;
+    position: relative;
+    width: 30%;
+    height: 5.2vw;
+    display: table-cell;
+    vertical-align: middle;
+    float: left;
     object-fit: cover;
 }
+.box-img-new {
+    position: relative;
+    height: 100%;
+}
 .content-title-new {
-    position: absolute;
-    width: 50%;
-    height: 15%;
-    top: 20%;
-    left: 40%;
-    font-size: 0.8vw;
+    position: relative;
+    width: 70%;
+    height: 100%;
+    padding-top: 4%;
+    left: 5%;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 0.6rem;
     font-weight: bold;
+    transition: 0.2s;
+}
+.content-title-new:hover {
+    color: #79c6b6;
 }
 .content-item {
     position: relative;
     width: 100%;
-    height: 30vh;
+    height: auto;
     background-color: #ffffff;
     padding: 1rem 1rem;
     margin-bottom: 20px;
@@ -124,68 +237,335 @@ form > img.add-image {
     box-shadow: 2px 2px 4px gray;
     border-radius: 4px 4px 4px 4px;
 }
+.content-item:hover {
+    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+.content-item a {
+    width: 100%;
+}
 .content-img {
     position: relative;
-    left: -70%;
-    width: 20vw;
+    left: 0;
+    width: 40%;
     height: 14vw;
     object-fit: cover;
+    float: left;
 }
+
 .content-title {
-    position: absolute;
-    width: 50%;
-    height: 15%;
-    top: 12%;
-    left: 45%;
-    font-size: 1.2vw;
+    position: relative;
+    width: 60%;
+    height: auto;
+    top: 0;
+    left: 2%;
+    font-size: 1.7vw;
     font-weight: bold;
+    float: left;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    transition: 0.2s;
+}
+.content-title:hover {
+    color: #79c6b6;
 }
 .content-date {
     position: relative;
-    margin-top: -57%;
-
-    left: 37%;
+    margin-top: 0;
+    width: 60%;
+    left: 2%;
     font-size: 0.7vw;
 }
-.content-content {
-    position: absolute;
-    top: 45%;
-    left: 45%;
+p.content-content {
+    position: relative;
+    top: 0;
+    width: 58%;
+    left: 2%;
     font-size: 0.9vw;
-    float: right;
+    float: left;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
-.page {
+.page-page {
+    position: relative;
     box-shadow: 2px 2px 2px gray;
     border-radius: 4px 4px 4px 4px;
     margin-top: 5%;
+    padding: 5%;
 }
-.page-page {
-    position: relative;
-}
+
 .page-title {
     position: relative;
-    margin-top: 12%;
+    margin-top: 3%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 .page-date {
     position: relative;
     margin-top: 3%;
+    margin-left: 2%;
+    float: left;
 }
-.img-box {
-    width: 100%;
-    padding-top: 50%;
-    padding-top: -50%;
-    position: relative;
-    margin-top: -50%;
-}
+
 .page-img {
-    position: absolute;
+    position: relative;
     width: 100%;
-    height: 100%;
+    height: 30vw;
     top: 110%;
     object-fit: cover;
 }
 .page-content {
     position: relative;
-    margin-top: 65%;
+    margin-top: 7%;
+    padding-left: 5%;
+    padding-right: 5%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+.page-content h2 {
+    padding: 0.4em 0.5em; /*文字の上下 左右の余白*/
+    color: #494949; /*文字色*/
+    background: #f4f4f4; /*背景色*/
+    border-left: solid 5px #7db4e6; /*左線*/
+    border-bottom: solid 3px #d7d7d7; /*下線*/
+}
+.page-content h3 {
+    border-bottom: double 5px #7db4e6;
+}
+.page-content img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.page-comment {
+    position: relative;
+    box-shadow: 2px 2px 2px gray;
+    border-radius: 4px 4px 4px 4px;
+    margin-top: 5%;
+    padding: 5%;
+    height: auto;
+}
+
+.page-comment label {
+    position: relative;
+    font-size: 1.3rem;
+    width: 100%;
+}
+.page-comment input {
+    position: relative;
+    width: 100%;
+}
+.page-comment .name-mail {
+    width: 100%;
+}
+
+.page-comment .comment-author {
+    position: relative;
+    display: inline-block;
+    width: 45%;
+}
+.page-comment .comment-mail {
+    position: relative;
+    display: inline-block;
+    width: 45%;
+    margin-left: 9%;
+}
+.comment-form {
+    margin-top: 7%;
+}
+.comment-author span,
+.comment-mail span,
+.comment-message span {
+    color: red;
+}
+
+.page-comment .author,
+.page-comment .email {
+    position: relative;
+    width: 100%;
+    text-align: left;
+}
+.page-comment .comment-message {
+    position: relative;
+    width: 100%;
+}
+.page-comment textarea {
+    position: relative;
+    width: 100%;
+    height: 10rem;
+}
+
+.comment-text {
+    position: relative;
+    width: 100%;
+}
+.comment-b {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.comment-s {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+}
+.comment-submit input {
+    position: relative;
+    width: 33%;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    background-color: #f28e3c;
+}
+.timeline {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-top: 0.1rem solid #5e5e5e;
+    padding: 5%;
+}
+.timeline div {
+    position: relative;
+    width: 100%;
+}
+.timeline-num {
+    position: relative;
+    width: 10%;
+    padding: 3%;
+    padding-top: 5%;
+    font-size: 1.2rem;
+}
+.timeline-name {
+    position: relative;
+    width: 90%;
+    padding: 2%;
+    padding-top: 5%;
+    font-size: 1.2rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+.timeline-content {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding-left: 11%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+.timeline-date {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding-top: 3%;
+    padding-left: 11%;
+    font-size: 0.7rem;
+    color: grey;
+}
+.timeline a {
+    color: #1111cc;
+    width: 100%;
+    padding-left: 11%;
+    text-decoration: underline;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+@media screen and (max-width: 480px) {
+    /*　画面サイズが480pxからはここを読み込む　*/
+    .slider {
+        position: relative;
+        margin: 10px auto;
+        width: 100%;
+    }
+    .slider img {
+        position: relative;
+        height: 50vw;
+        width: 100%;
+        object-fit: cover;
+    }
+    .slider h2 {
+        top: -20vw;
+        left: 10%;
+        font-size: 1rem;
+    }
+    .contents {
+    }
+    .content-item {
+        height: auto;
+        padding: 1rem 1rem;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .content-title {
+        width: 66%;
+        height: 100%;
+        top: 0;
+        left: 4vw;
+        font-size: 4.5vw;
+    }
+    .content-date {
+        margin-top: 1vw;
+        left: 0%;
+        font-size: 3vw;
+        clear: both;
+    }
+    p.content-content {
+        top: 0;
+        left: 0;
+        width: 100%;
+        font-size: 3.5vw;
+        clear: both;
+    }
+
+    .content-img {
+        left: 0;
+        width: 33%;
+        height: 20vw;
+        object-fit: cover;
+        z-index: 100;
+    }
+    .new-box {
+        height: 10vh;
+        margin-bottom: 40px;
+        margin-top: 40px;
+    }
+
+    .content-img-new {
+        width: 33%;
+        height: 19.2vw;
+    }
+    .box-img-new {
+        position: relative;
+        height: 100%;
+    }
+    .content-title-new {
+        width: 67%;
+        padding-top: 1%;
+        padding-right: 2%;
+        left: 5%;
+        font-size: 0.7rem;
+    }
+    .page-img {
+        height: 60vw;
+        top: 110%;
+        object-fit: cover;
+    }
+    .page-comment .comment-author {
+        width: 100%;
+    }
+    .page-comment .comment-mail {
+        width: 100%;
+        margin-left: 0;
+    }
+    .comment-submit input {
+        width: 50%;
+    }
 }

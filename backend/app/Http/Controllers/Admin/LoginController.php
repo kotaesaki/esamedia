@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/admin/home';
 
     /**
      * Create a new controller instance.
@@ -52,6 +52,6 @@ class LoginController extends Controller
 
     public function username()
     {
-      return 'login_id';
+        return 'login_id';
     }
 }
