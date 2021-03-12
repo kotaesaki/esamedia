@@ -22,6 +22,8 @@ Route::get('/tag/{term_slug}', 'App\Http\Controllers\SearchController@searchTag'
 Route::post('/pages/{post_id}/comment', 'App\Http\Controllers\PageController@send')->name('send_comment');
 
 
+Route::get('admin/home/register', 'App\Http\Controllers\Admin\RegisterController@showRegisterForm')->name('admin.register');
+Route::post('admin/home/register/complete', 'App\Http\Controllers\Admin\RegisterController@create')->name('create_register');
 
 Auth::routes();
 
@@ -62,8 +64,6 @@ Route::group(['middleware' => ['auth', 'can:system-only']], function () {
     Route::get('admin/home/comment', 'App\Http\Controllers\CommentController@showAdmin')->name('show_comment');
     Route::post('admin/home/comment/delete', 'App\Http\Controllers\CommentController@delete')->name('delete_comment');
 
-    Route::get('admin/home/register', 'App\Http\Controllers\Admin\RegisterController@showRegisterForm')->name('admin.register');
-    Route::post('admin/home/register/complete', 'App\Http\Controllers\Admin\RegisterController@create')->name('create_register');
 
     Route::get('admin/home/users', 'App\Http\Controllers\UserAdminController@index')->name('show_users');
     Route::post('admin/home/users/delete', 'App\Http\Controllers\UserAdminController@delete')->name('delete_user');
