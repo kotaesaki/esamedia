@@ -26,10 +26,10 @@
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
-  <title>管理画面 / ESALOG</title>
+  <title>管理画面 / LOGLOG</title>
 
   <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
+  <script src="{{ mix('js/app.js') }}" defer></script>
 
 
   <!-- Fonts -->
@@ -37,7 +37,7 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
   <!-- Styles -->
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -71,6 +71,7 @@
               class="non-active" @endif><i class="fas fa-comments"></i> Comments</a>
           </li>
 
+          @if(Auth::user()->user_status == "admin")
           <li>
             <a href="{{route('show_users')}}" @if(Request::is('admin/home/users')) class="active" @else
               class="non-active" @endif><i class="fas fa-users"></i> Users List</a>
@@ -87,6 +88,7 @@
             <a href="{{route('get_tag')}}" @if(Request::is('admin/home/tag')) class="active" @else class="non-active"
               @endif><i class="fas fa-tags"></i> Tags</a>
           </li>
+          @endif
         </ul>
       </div>
 
@@ -130,6 +132,7 @@
             <a href="{{route('show_comment')}}" @if(Request::is('admin/home/comment')) class="active" @else
               class="non-active" @endif><i class="fas fa-comments"></i> Comments</a>
           </li>
+          @if(Auth::user()->user_status == "admin")
           <li>
             <a href="{{route('show_users')}}" @if(Request::is('admin/home/users')) class="active" @else
               class="non-active" @endif><i class="fas fa-users"></i> Users List</a>
@@ -146,6 +149,7 @@
             <a href="{{route('get_tag')}}" @if(Request::is('admin/home/tag')) class="active" @else class="non-active"
               @endif><i class="fas fa-tags"></i> Tags</a>
           </li>
+          @endif
 
         </ul>
 
