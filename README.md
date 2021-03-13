@@ -1,18 +1,16 @@
-# esamedia
-
-- [ポートフォリオ紹介](#anchor1)
-    - [トップページ](#anchor11)
-    - [環境](#anchor12)
-- [設計](#anchor2)
-    - [ER図](#anchor21)
-    - [画面一覧表](#anchor22)
-    - [機能一覧表](#anchor23)
-    - [画面遷移図](#anchor24)
-- [開発](#anchor3)
-    - [全体](#anchor31)
-    - [フロントエンド](#anchor32)
-    - [バックエンド](#anchor33)
-    - [インフラストラクチャ + DevOps](#anchor34)
+* [ポートフォリオ紹介](#anchor1)
+    * [トップページ](#anchor11)
+    * [環境](#anchor12)
+* [設計](#anchor2)
+    * [ER図](#anchor21)
+    * [画面一覧表](#anchor22)
+    * [機能一覧表](#anchor23)
+    * [画面遷移図](#anchor24)
+* [開発](#anchor3)
+    * [全体](#anchor31)
+    * [フロントエンド](#anchor32)
+    * [バックエンド](#anchor33)
+    * [インフラストラクチャ + DevOps](#anchor34)
 
 <a id="#anchor1"></a>
 
