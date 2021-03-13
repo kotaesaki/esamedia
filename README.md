@@ -32,7 +32,7 @@ CRUD処理やログイン処理を学ぶにはメディアサイトの構築は�
 
 ## トップページ
 
-*パソコン
+*パソコン*
 
 管理者ページ
 
@@ -42,7 +42,10 @@ CRUD処理やログイン処理を学ぶにはメディアサイトの構築は�
 
 ![https://user-images.githubusercontent.com/65902454/111035487-29eb2280-845e-11eb-9270-2cb72b25f5bb.png](https://user-images.githubusercontent.com/65902454/111035487-29eb2280-845e-11eb-9270-2cb72b25f5bb.png)
 
-*スマートフォン+タブレット
+*スマートフォン+タブレット*
+
+<img src="https://user-images.githubusercontent.com/65902454/111038760-ffa16100-846d-11eb-8906-1eadefd293c6.PNG" width="30%">
+<img src="https://user-images.githubusercontent.com/65902454/111038764-04661500-846e-11eb-9a99-1f7220fd80e4.PNG" width="30%">
 
 <a id="#anchor12"></a>
 
@@ -132,14 +135,46 @@ CRUD処理やログイン処理を学ぶにはメディアサイトの構築は�
 
 ## 全体
 
+- PHP 7.3
+- Laravel 8.12
+- Docker 19.03.13
+- Docker Compose 1.27.4
+- Heroku
+- nginx 1.18 (開発環境)
+- MySQL 8.0(開発環境)
 <a id="#anchor32"></a>
 
 ## フロントエンド
 
-<a id="#anchor33"></a>
+- Blade
 
+初めてガッツリとLaravelを触るため、Bladeを採用しました。
+
+
+<a id="#anchor33"></a>
 ## バックエンド
+
+- PHP 7.3
+- Laravel 8.12
+- PHPUnit
+
+管理者サイトでは記事、タグ、カテゴリ、コメントのCRUD処理を開発しました。
+
+管理者と編集者でユーザーの権限を分け、ユーザー削除は管理者のみ実施できるようにしました。
+
+テストにはPHPUnitを採用しました。
 
 <a id="#anchor34"></a>
 
 ## インフラストラクチャ+DevOps
+
+- Docker 19.03.13
+- Docker Compose 1.27.4
+- Heroku
+- GitHub
+
+サーバにはHerokuを採用しました。
+
+Heroku CLIからコマンドでデプロイ出来るようにしました。
+
+Webサーバにはapache、データベースにはMySQLを利用しました。
